@@ -1,0 +1,118 @@
+<svg id="AnimLogo" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" height="400">
+  <!-- Background -->
+  <rect width="1200" height="400" fill="#000814" />
+  
+  <!-- Background stars (small dots) -->
+  <circle cx="150" cy="50" r="2" fill="white" opacity="0.8"/>
+  <circle cx="350" cy="80" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="450" cy="120" r="2" fill="white" opacity="0.9"/>
+  <circle cx="550" cy="60" r="1" fill="white" opacity="0.7"/>
+  <circle cx="650" cy="90" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="750" cy="40" r="2" fill="white" opacity="0.6"/>
+  <circle cx="850" cy="100" r="1" fill="white" opacity="0.9"/>
+  <circle cx="100" cy="350" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="300" cy="320" r="2" fill="white" opacity="0.8"/>
+  <circle cx="500" cy="350" r="1" fill="white" opacity="0.6"/>
+  <circle cx="700" cy="330" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="900" cy="360" r="2" fill="white" opacity="0.7"/>
+  
+  <!-- Earth -->
+  <defs>
+    <radialGradient id="earthGradient">
+      <stop offset="0%" stop-color="#4a90e2"/>
+      <stop offset="50%" stop-color="#2e7cd6"/>
+      <stop offset="100%" stop-color="#1a5490"/>
+    </radialGradient>
+    <pattern id="earthPattern" x="0" y="0" width="100%" height="100%">
+      <rect width="100%" height="100%" fill="url(#earthGradient)"/>
+      <!-- Continents -->
+      <path d="M20,50 Q40,40 50,45 T70,50 Q80,55 75,65 Q60,70 40,65 Q25,60 20,50" fill="#228b22" opacity="0.8"/>
+      <path d="M10,30 Q20,25 25,30 Q20,35 10,30" fill="#228b22" opacity="0.8"/>
+      <path d="M60,25 Q70,20 75,25 Q70,30 60,25" fill="#228b22" opacity="0.8"/>
+    </pattern>
+  </defs>
+  <circle cx="200" cy="200" r="100" fill="url(#earthPattern)" />
+  <!-- Earth atmosphere glow -->
+  <circle cx="200" cy="200" r="100" stroke="#87CEEB" stroke-width="3" fill="none" opacity="0.5"/>
+  
+  <!-- Stars around Earth -->
+  <polygon points="350,150 360,170 382,173 366,188 370,210 350,199 330,210 334,188 318,173 340,170" fill="#FFD700" />
+  <polygon points="450,250 455,260 467,262 459,270 461,282 450,276 439,282 441,270 433,262 445,260" fill="#FFA500" />
+  <polygon points="100,100 105,110 117,112 109,120 111,132 100,126 89,132 91,120 83,112 95,110" fill="#FFFF00" />
+  <polygon points="250,320 255,330 267,332 259,340 261,352 250,346 239,352 241,340 233,332 245,330" fill="#FFE4B5" />
+  
+  <!-- Medium stars -->
+  <polygon points="600,200 608,216 626,219 613,231 616,249 600,240 584,249 587,231 574,219 592,216" fill="#FFF8DC" />
+  <polygon points="800,150 806,162 820,164 810,174 812,188 800,181 788,188 790,174 780,164 794,162" fill="#F0E68C" />
+  
+  <!-- Black hole with concentric circles -->
+  <defs>
+    <!-- Accretion disk gradient -->
+    <radialGradient id="accretionDisk">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="10%" stop-color="#000000"/>
+      <stop offset="20%" stop-color="#1a0000"/>
+      <stop offset="30%" stop-color="#4a0000"/>
+      <stop offset="40%" stop-color="#8B0000"/>
+      <stop offset="50%" stop-color="#DC143C"/>
+      <stop offset="60%" stop-color="#FF4500"/>
+      <stop offset="70%" stop-color="#FFA500"/>
+      <stop offset="85%" stop-color="#FFD700" opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" opacity="0.3"/>
+    </radialGradient>
+    
+    <!-- Swirling effect filter -->
+    <filter id="turbulence">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turbulence"/>
+      <feComposite in="turbulence" in2="SourceGraphic" operator="multiply"/>
+    </filter>
+    
+    <!-- Distortion filter -->
+    <filter id="distort">
+      <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="2" result="turbulence"/>
+      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  
+  <!-- Gravitational lensing effect background -->
+  <ellipse cx="1000" cy="200" rx="180" ry="180" fill="none" stroke="url(#accretionDisk)" stroke-width="3" opacity="0.2" filter="url(#distort)"/>
+  <ellipse cx="1000" cy="200" rx="160" ry="160" fill="none" stroke="url(#accretionDisk)" stroke-width="4" opacity="0.3" filter="url(#distort)"/>
+  
+  <!-- Swirling accretion disk -->
+  <g transform="rotate(15 1000 200)">
+    <ellipse cx="1000" cy="200" rx="140" ry="45" fill="url(#accretionDisk)" opacity="0.9" filter="url(#turbulence)"/>
+  </g>
+  <g transform="rotate(-10 1000 200)">
+    <ellipse cx="1000" cy="200" rx="120" ry="35" fill="url(#accretionDisk)" opacity="0.8"/>
+  </g>
+  
+  <!-- Intense gravitational waves -->
+  <circle cx="1000" cy="200" r="130" stroke="#FF0000" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="5,5"/>
+  <circle cx="1000" cy="200" r="110" stroke="#FF4500" stroke-width="2" fill="none" opacity="0.4" stroke-dasharray="10,5"/>
+  <circle cx="1000" cy="200" r="90" stroke="#FFA500" stroke-width="3" fill="none" opacity="0.5" stroke-dasharray="15,5"/>
+  <circle cx="1000" cy="200" r="70" stroke="#FFD700" stroke-width="4" fill="none" opacity="0.6"/>
+  <circle cx="1000" cy="200" r="50" stroke="#FFFFFF" stroke-width="5" fill="none" opacity="0.7"/>
+  
+  <!-- Photon sphere -->
+  <circle cx="1000" cy="200" r="38" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.9" stroke-dasharray="2,2">
+    <animateTransform attributeName="transform" type="rotate" from="0 1000 200" to="360 1000 200" dur="20s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Event horizon with absolute darkness -->
+  <circle cx="1000" cy="200" r="30" fill="#000000"/>
+  <circle cx="1000" cy="200" r="25" fill="#000000" opacity="1"/>
+  
+  <!-- Gravitational distortion rays -->
+  <path d="M1000,200 L850,200 Q900,190 920,200 T950,200" stroke="#FF6B6B" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M1000,200 L850,220 Q900,210 920,220 T950,220" stroke="#FF4500" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M1000,200 L850,180 Q900,190 920,180 T950,180" stroke="#FFA500" stroke-width="2" fill="none" opacity="0.3"/>
+  
+  <!-- Jets of energy -->
+  <path d="M1000,170 L1000,50" stroke="url(#accretionDisk)" stroke-width="3" opacity="0.4"/>
+  <path d="M1000,230 L1000,350" stroke="url(#accretionDisk)" stroke-width="3" opacity="0.4"/>
+  
+  <!-- Singularity - absolute void -->
+  <circle cx="1000" cy="200" r="15" fill="#000000"/>
+  <circle cx="1000" cy="200" r="8" fill="#000000"/>
+  <circle cx="1000" cy="200" r="3" fill="#000000"/>
+</svg>

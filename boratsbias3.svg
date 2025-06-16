@@ -1,0 +1,325 @@
+<svg id="AnimLogo" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" height="400">
+  <!-- Deep space background with nebula -->
+  <defs>
+    <radialGradient id="spaceGradient">
+      <stop offset="0%" stop-color="#0a0a2e"/>
+      <stop offset="40%" stop-color="#050520"/>
+      <stop offset="70%" stop-color="#000814"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    
+    <filter id="nebula">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="4" seed="2"/>
+      <feColorMatrix values="0 0 0 0 0.1
+                             0 0 0 0 0
+                             0 0 0 0 0.3
+                             0 0 0 1 0"/>
+    </filter>
+    
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="1.5"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="400" fill="url(#spaceGradient)" />
+  <rect width="1200" height="400" fill="#1a0033" opacity="0.3" filter="url(#nebula)"/>
+  
+  <!-- Star field with varying intensities -->
+  <g filter="url(#starGlow)">
+    <circle cx="150" cy="50" r="2" fill="white" opacity="0.9">
+      <animate attributeName="opacity" from="0.9" to="0.3" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="80" r="1.5" fill="#FFE4E1" opacity="0.7"/>
+    <circle cx="450" cy="120" r="2.5" fill="#E0FFFF" opacity="1">
+      <animate attributeName="opacity" from="1" to="0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="550" cy="60" r="1" fill="white" opacity="0.8"/>
+    <circle cx="650" cy="90" r="1.8" fill="#F0E68C" opacity="0.9"/>
+    <circle cx="750" cy="40" r="2.2" fill="white" opacity="0.7">
+      <animate attributeName="opacity" from="0.7" to="0.2" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="850" cy="100" r="1.3" fill="#FFB6C1" opacity="1"/>
+    <circle cx="100" cy="350" r="1.7" fill="white" opacity="0.8"/>
+    <circle cx="300" cy="320" r="2.3" fill="#ADD8E6" opacity="0.9">
+      <animate attributeName="opacity" from="0.9" to="0.4" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="350" r="1.2" fill="white" opacity="0.6"/>
+    <circle cx="700" cy="330" r="1.9" fill="#DDA0DD" opacity="1"/>
+    <circle cx="900" cy="360" r="2.1" fill="white" opacity="0.8"/>
+  </g>
+  
+  <!-- EARTH with enhanced effects -->
+  <defs>
+    <radialGradient id="earthGradient">
+      <stop offset="0%" stop-color="#6BB6FF"/>
+      <stop offset="30%" stop-color="#4A90E2"/>
+      <stop offset="60%" stop-color="#2E7CD6"/>
+      <stop offset="100%" stop-color="#1A5490"/>
+    </radialGradient>
+    
+    <radialGradient id="atmosphereGradient">
+      <stop offset="60%" stop-color="#87CEEB" opacity="0"/>
+      <stop offset="90%" stop-color="#87CEEB" opacity="0.3"/>
+      <stop offset="100%" stop-color="#ADD8E6" opacity="0.8"/>
+    </radialGradient>
+    
+    <filter id="earthGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <pattern id="earthPattern" x="0" y="0" width="100%" height="100%">
+      <rect width="100%" height="100%" fill="url(#earthGradient)"/>
+      <!-- Continents with more detail -->
+      <path d="M20,50 Q40,40 50,45 T70,50 Q80,55 75,65 Q60,70 40,65 Q25,60 20,50" fill="#228b22" opacity="0.9"/>
+      <path d="M10,30 Q20,25 25,30 Q20,35 10,30" fill="#228b22" opacity="0.9"/>
+      <path d="M60,25 Q70,20 75,25 Q70,30 60,25" fill="#228b22" opacity="0.9"/>
+      <path d="M35,35 Q45,32 48,35 Q45,38 35,35" fill="#2d5a2d" opacity="0.7"/>
+      <!-- Cloud patterns -->
+      <ellipse cx="30" cy="60" rx="15" ry="5" fill="white" opacity="0.3"/>
+      <ellipse cx="55" cy="40" rx="10" ry="3" fill="white" opacity="0.2"/>
+    </pattern>
+  </defs>
+  
+  <!-- Earth with atmosphere layers -->
+  <circle cx="200" cy="200" r="110" fill="url(#atmosphereGradient)" filter="url(#earthGlow)"/>
+  <circle cx="200" cy="200" r="100" fill="url(#earthPattern)">
+    <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="120s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="200" r="100" stroke="#87CEEB" stroke-width="4" fill="none" opacity="0.6" filter="url(#earthGlow)"/>
+  
+  <!-- City lights on dark side -->
+  <g opacity="0.6">
+    <circle cx="160" cy="180" r="1" fill="#FFD700"/>
+    <circle cx="165" cy="185" r="0.8" fill="#FFD700"/>
+    <circle cx="170" cy="190" r="0.6" fill="#FFA500"/>
+  </g>
+  
+  <!-- Enhanced stars with various effects -->
+  <g filter="url(#starGlow)">
+    <polygon points="350,150 360,170 382,173 366,188 370,210 350,199 330,210 334,188 318,173 340,170" fill="#FFD700">
+      <animate attributeName="fill" values="#FFD700;#FFFFFF;#FFD700" dur="3s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="450,250 455,260 467,262 459,270 461,282 450,276 439,282 441,270 433,262 445,260" fill="#FFA500"/>
+    <polygon points="100,100 105,110 117,112 109,120 111,132 100,126 89,132 91,120 83,112 95,110" fill="#FFFF00">
+      <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="10s" repeatCount="indefinite"/>
+    </polygon>
+    <polygon points="250,320 255,330 267,332 259,340 261,352 250,346 239,352 241,340 233,332 245,330" fill="#FFE4B5"/>
+  </g>
+  
+  <!-- Shooting star -->
+  <line x1="400" y1="50" x2="500" y2="100" stroke="white" stroke-width="2" opacity="0">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" begin="2s" repeatCount="indefinite" repeatDur="8s"/>
+    <animate attributeName="x1" from="400" to="600" dur="1s" begin="2s" repeatCount="indefinite" repeatDur="8s"/>
+    <animate attributeName="y1" from="50" to="150" dur="1s" begin="2s" repeatCount="indefinite" repeatDur="8s"/>
+    <animate attributeName="x2" from="500" to="700" dur="1s" begin="2s" repeatCount="indefinite" repeatDur="8s"/>
+    <animate attributeName="y2" from="100" to="200" dur="1s" begin="2s" repeatCount="indefinite" repeatDur="8s"/>
+  </line>
+  
+  <!-- ULTIMATE BLACK HOLE -->
+  <defs>
+    <!-- Complex gradient system -->
+    <radialGradient id="eventHorizon">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="70%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    
+    <radialGradient id="accretionDisk">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="10%" stop-color="#1a0000"/>
+      <stop offset="20%" stop-color="#4a0000"/>
+      <stop offset="30%" stop-color="#8B0000"/>
+      <stop offset="40%" stop-color="#DC143C"/>
+      <stop offset="50%" stop-color="#FF1493"/>
+      <stop offset="60%" stop-color="#FF69B4"/>
+      <stop offset="70%" stop-color="#FFA500"/>
+      <stop offset="80%" stop-color="#FFD700"/>
+      <stop offset="90%" stop-color="#FFFF00"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </radialGradient>
+    
+    <linearGradient id="relativisticJet" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" opacity="0"/>
+      <stop offset="10%" stop-color="#00FFFF" opacity="0.3"/>
+      <stop offset="30%" stop-color="#1E90FF" opacity="0.6"/>
+      <stop offset="50%" stop-color="#0000FF" opacity="0.8"/>
+      <stop offset="70%" stop-color="#4B0082" opacity="0.9"/>
+      <stop offset="90%" stop-color="#9400D3" opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" opacity="1"/>
+    </linearGradient>
+    
+    <!-- Advanced filters -->
+    <filter id="plasmaEffect" x="-100%" y="-100%" width="300%" height="300%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="4" seed="5">
+        <animate attributeName="baseFrequency" values="0.02 0.03;0.04 0.06;0.02 0.03" dur="10s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feColorMatrix values="0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 0 0
+                             0 0 0 1 0"/>
+      <feComponentTransfer>
+        <feFuncA type="discrete" tableValues="0 .2 .4 .6 .8 1"/>
+      </feComponentTransfer>
+      <feGaussianBlur stdDeviation="1"/>
+      <feComposite operator="over" in2="SourceGraphic"/>
+    </filter>
+    
+    <filter id="spacetimeDistortion" x="-50%" y="-50%" width="200%" height="200%">
+      <feTurbulence type="turbulence" baseFrequency="0.01" numOctaves="2" result="turbulence">
+        <animate attributeName="seed" values="1;100;1" dur="20s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    
+    <filter id="hyperGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feComposite in="coloredBlur" in2="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Gravitational field visualization -->
+  <g opacity="0.4">
+    <ellipse cx="1000" cy="200" rx="300" ry="300" fill="none" stroke="url(#accretionDisk)" stroke-width="1" filter="url(#spacetimeDistortion)"/>
+    <ellipse cx="1000" cy="200" rx="250" ry="250" fill="none" stroke="url(#accretionDisk)" stroke-width="2" filter="url(#spacetimeDistortion)"/>
+  </g>
+  
+  <!-- Matter streams being pulled in -->
+  <g opacity="0.7">
+    <path d="M 700,100 Q 850,150 1000,200" stroke="url(#accretionDisk)" stroke-width="3" fill="none" filter="url(#plasmaEffect)">
+      <animate attributeName="stroke-width" values="3;6;3" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 700,300 Q 850,250 1000,200" stroke="url(#accretionDisk)" stroke-width="3" fill="none" filter="url(#plasmaEffect)">
+      <animate attributeName="stroke-width" values="3;6;3" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 750,200 Q 875,200 1000,200" stroke="url(#accretionDisk)" stroke-width="5" fill="none" filter="url(#plasmaEffect)">
+      <animate attributeName="stroke-width" values="5;10;5" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Multi-layered accretion disk -->
+  <g filter="url(#hyperGlow)">
+    <!-- Outer plasma ring -->
+    <g transform="rotate(0 1000 200)">
+      <animateTransform attributeName="transform" type="rotate" from="0 1000 200" to="360 1000 200" dur="20s" repeatCount="indefinite"/>
+      <ellipse cx="1000" cy="200" rx="180" ry="60" fill="url(#accretionDisk)" opacity="0.3" filter="url(#plasmaEffect)"/>
+    </g>
+    
+    <!-- Middle superheated ring -->
+    <g transform="rotate(45 1000 200)">
+      <animateTransform attributeName="transform" type="rotate" from="45 1000 200" to="405 1000 200" dur="10s" repeatCount="indefinite"/>
+      <ellipse cx="1000" cy="200" rx="150" ry="50" fill="url(#accretionDisk)" opacity="0.6" filter="url(#plasmaEffect)"/>
+    </g>
+    
+    <!-- Inner death spiral -->
+    <g transform="rotate(-30 1000 200)">
+      <animateTransform attributeName="transform" type="rotate" from="-30 1000 200" to="330 1000 200" dur="5s" repeatCount="indefinite"/>
+      <ellipse cx="1000" cy="200" rx="120" ry="40" fill="url(#accretionDisk)" opacity="0.9"/>
+    </g>
+    
+    <!-- Innermost plasma -->
+    <g transform="rotate(60 1000 200)">
+      <animateTransform attributeName="transform" type="rotate" from="60 1000 200" to="420 1000 200" dur="2s" repeatCount="indefinite"/>
+      <ellipse cx="1000" cy="200" rx="90" ry="30" fill="url(#accretionDisk)" opacity="1"/>
+    </g>
+  </g>
+  
+  <!-- Gravitational waves -->
+  <g opacity="0.6">
+    <circle cx="1000" cy="200" r="100" stroke="white" stroke-width="0.5" fill="none">
+      <animate attributeName="r" values="100;200;300" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="200" r="100" stroke="#FFD700" stroke-width="1" fill="none">
+      <animate attributeName="r" values="100;180;260" dur="3s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="200" r="100" stroke="#FF69B4" stroke-width="1.5" fill="none">
+      <animate attributeName="r" values="100;160;220" dur="3s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0" dur="3s" begin="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Photon sphere -->
+  <circle cx="1000" cy="200" r="50" stroke="white" stroke-width="4" fill="none" opacity="1" stroke-dasharray="5,5" filter="url(#hyperGlow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 1000 200" to="-360 1000 200" dur="0.5s" repeatCount="indefinite"/>
+    <animate attributeName="stroke" values="white;#00FFFF;#FF00FF;white" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Relativistic jets -->
+  <g filter="url(#hyperGlow)">
+    <!-- North jet -->
+    <path d="M 1000,150 L 980,0 L 1000,0 L 1020,0 Z" fill="url(#relativisticJet)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 1000,150 L 990,0 L 1010,0 Z" fill="white" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="0.5s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- South jet -->
+    <path d="M 1000,250 L 980,400 L 1000,400 L 1020,400 Z" fill="url(#relativisticJet)" opacity="0.9">
+      <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+    <path d="M 1000,250 L 990,400 L 1010,400 Z" fill="white" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.2;0.6" dur="0.5s" begin="0.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Event horizon -->
+  <circle cx="1000" cy="200" r="40" fill="url(#eventHorizon)" filter="url(#spacetimeDistortion)"/>
+  <circle cx="1000" cy="200" r="35" fill="#000000"/>
+  <circle cx="1000" cy="200" r="30" fill="#000000"/>
+  
+  <!-- Singularity with void effect -->
+  <circle cx="1000" cy="200" r="20" fill="#000000">
+    <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1000" cy="200" r="10" fill="#000000"/>
+  <circle cx="1000" cy="200" r="5" fill="#000000"/>
+  
+  <!-- Spacetime grid warping -->
+  <g opacity="0.2" stroke="#00FFFF" stroke-width="0.5" fill="none">
+    <path d="M 700,50 Q 1000,150 1300,50" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,100 Q 1000,175 1300,100" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,150 Q 1000,190 1300,150" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,200 Q 1000,200 1300,200" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,250 Q 1000,210 1300,250" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,300 Q 1000,225 1300,300" filter="url(#spacetimeDistortion)"/>
+    <path d="M 700,350 Q 1000,250 1300,350" filter="url(#spacetimeDistortion)"/>
+    
+    <path d="M 850,0 Q 950,200 850,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 900,0 Q 975,200 900,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 950,0 Q 990,200 950,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 1000,0 Q 1000,200 1000,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 1050,0 Q 1010,200 1050,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 1100,0 Q 1025,200 1100,400" filter="url(#spacetimeDistortion)"/>
+    <path d="M 1150,0 Q 1050,200 1150,400" filter="url(#spacetimeDistortion)"/>
+  </g>
+  
+  <!-- Hawking radiation particles -->
+  <g opacity="0.8">
+    <circle cx="960" cy="200" r="1" fill="#00FFFF">
+      <animate attributeName="cx" values="960;940;920" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1040" cy="200" r="1" fill="#FF00FF">
+      <animate attributeName="cx" values="1040;1060;1080" dur="3s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="160" r="1" fill="#FFFF00">
+      <animate attributeName="cy" values="160;140;120" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="1000" cy="240" r="1" fill="#00FF00">
+      <animate attributeName="cy" values="240;260;280" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.8;0.4;0" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
