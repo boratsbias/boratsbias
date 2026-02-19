@@ -1,0 +1,210 @@
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.025" numOctaves="3" seed="12" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.0" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!--
+      Layers:
+        Input  (x=100): i0=130, i1=210, i2=290
+        H1     (x=270): h0=90,  h1=170, h2=250, h3=330
+        H2     (x=450): j0=90,  j1=170, j2=250, j3=330
+        H3     (x=630): k0=130, k1=210, k2=290
+        Output (x=800): o0=170, o1=250
+    -->
+
+    <!-- A representative set of signal paths hitting every node -->
+    <path id="p0"  d="M100,130 L270,90  L450,90  L630,130 L800,170"/>
+    <path id="p1"  d="M100,210 L270,170 L450,170 L630,210 L800,250"/>
+    <path id="p2"  d="M100,290 L270,250 L450,250 L630,290 L800,170"/>
+    <path id="p3"  d="M100,130 L270,330 L450,330 L630,290 L800,250"/>
+    <path id="p4"  d="M100,290 L270,90  L450,170 L630,130 L800,170"/>
+    <path id="p5"  d="M100,210 L270,250 L450,90  L630,210 L800,250"/>
+    <path id="p6"  d="M100,130 L270,170 L450,330 L630,130 L800,250"/>
+    <path id="p7"  d="M100,290 L270,330 L450,250 L630,290 L800,170"/>
+    <path id="p8"  d="M100,210 L270,90  L450,330 L630,210 L800,170"/>
+    <path id="p9"  d="M100,130 L270,250 L450,170 L630,290 L800,250"/>
+    <path id="p10" d="M100,290 L270,170 L450,90  L630,130 L800,170"/>
+    <path id="p11" d="M100,210 L270,330 L450,170 L630,210 L800,250"/>
+
+    <style>
+      @keyframes edgeFade {
+        0%,100% { opacity: 0.09; }
+        50%      { opacity: 0.6;  }
+      }
+      @keyframes fireFill {
+        0%   { fill: #fff; stroke-width: 1.8; }
+        20%  { fill: #111; stroke-width: 2.6; }
+        42%  { fill: #fff; stroke-width: 1.8; }
+        100% { fill: #fff; stroke-width: 1.8; }
+      }
+      @keyframes fireDot {
+        0%   { r: 9;  opacity: 0.45; }
+        20%  { r: 14; opacity: 1; }
+        42%  { r: 9;  opacity: 0.45; }
+        100% { r: 9;  opacity: 0.45; }
+      }
+      @keyframes sigGo {
+        0%   { opacity: 0; }
+        4%   { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { opacity: 0; }
+      }
+
+      .e {
+        stroke: #111; stroke-width: 1.2; fill: none; stroke-linecap: round;
+        animation: edgeFade 4s ease-in-out infinite;
+      }
+      /* edge delays */
+      .d0 {animation-delay:0.00s} .d1 {animation-delay:0.12s} .d2 {animation-delay:0.24s}
+      .d3 {animation-delay:0.36s} .d4 {animation-delay:0.48s} .d5 {animation-delay:0.60s}
+      .d6 {animation-delay:0.72s} .d7 {animation-delay:0.84s} .d8 {animation-delay:0.96s}
+      .d9 {animation-delay:1.08s} .d10{animation-delay:1.20s} .d11{animation-delay:1.32s}
+      .d12{animation-delay:1.44s} .d13{animation-delay:1.56s} .d14{animation-delay:1.68s}
+      .d15{animation-delay:1.80s} .d16{animation-delay:1.92s} .d17{animation-delay:2.04s}
+      .d18{animation-delay:2.16s} .d19{animation-delay:2.28s} .d20{animation-delay:2.40s}
+      .d21{animation-delay:2.52s} .d22{animation-delay:2.64s} .d23{animation-delay:2.76s}
+      .d24{animation-delay:2.88s} .d25{animation-delay:3.00s} .d26{animation-delay:3.12s}
+      .d27{animation-delay:3.24s} .d28{animation-delay:3.36s} .d29{animation-delay:3.48s}
+      .d30{animation-delay:3.60s} .d31{animation-delay:3.72s}
+
+      /* input fires */
+      .in0{animation:fireDot 4s ease-in-out infinite; animation-delay:0.00s}
+      .in1{animation:fireDot 4s ease-in-out infinite; animation-delay:1.33s}
+      .in2{animation:fireDot 4s ease-in-out infinite; animation-delay:2.66s}
+
+      /* h1 fires */
+      .h10{animation:fireFill 4s ease-in-out infinite; animation-delay:0.50s}
+      .h11{animation:fireFill 4s ease-in-out infinite; animation-delay:1.33s}
+      .h12{animation:fireFill 4s ease-in-out infinite; animation-delay:2.16s}
+      .h13{animation:fireFill 4s ease-in-out infinite; animation-delay:3.00s}
+
+      /* h2 fires */
+      .h20{animation:fireFill 4s ease-in-out infinite; animation-delay:1.00s}
+      .h21{animation:fireFill 4s ease-in-out infinite; animation-delay:1.83s}
+      .h22{animation:fireFill 4s ease-in-out infinite; animation-delay:2.66s}
+      .h23{animation:fireFill 4s ease-in-out infinite; animation-delay:3.50s}
+
+      /* h3 fires */
+      .h30{animation:fireFill 4s ease-in-out infinite; animation-delay:1.50s}
+      .h31{animation:fireFill 4s ease-in-out infinite; animation-delay:2.33s}
+      .h32{animation:fireFill 4s ease-in-out infinite; animation-delay:3.16s}
+
+      /* output fires */
+      .o0{animation:fireDot 4s ease-in-out infinite; animation-delay:2.00s}
+      .o1{animation:fireDot 4s ease-in-out infinite; animation-delay:3.33s}
+
+      .sig{fill:#111; animation:sigGo 4s linear infinite;}
+      .s0 {animation-delay:0.00s} .s1 {animation-delay:0.33s}
+      .s2 {animation-delay:0.67s} .s3 {animation-delay:1.00s}
+      .s4 {animation-delay:1.33s} .s5 {animation-delay:1.67s}
+      .s6 {animation-delay:2.00s} .s7 {animation-delay:2.33s}
+      .s8 {animation-delay:2.67s} .s9 {animation-delay:3.00s}
+      .s10{animation-delay:3.33s} .s11{animation-delay:3.67s}
+    </style>
+  </defs>
+
+  <rect width="900" height="420" fill="#fff"/>
+
+  <!-- ── EDGES ── -->
+  <g filter="url(#rough)">
+
+    <!-- Input → H1 (3×4=12) -->
+    <line class="e d0"  x1="100" y1="130" x2="270" y2="90"/>
+    <line class="e d1"  x1="100" y1="130" x2="270" y2="170"/>
+    <line class="e d2"  x1="100" y1="130" x2="270" y2="250"/>
+    <line class="e d3"  x1="100" y1="130" x2="270" y2="330"/>
+    <line class="e d4"  x1="100" y1="210" x2="270" y2="90"/>
+    <line class="e d5"  x1="100" y1="210" x2="270" y2="170"/>
+    <line class="e d6"  x1="100" y1="210" x2="270" y2="250"/>
+    <line class="e d7"  x1="100" y1="210" x2="270" y2="330"/>
+    <line class="e d8"  x1="100" y1="290" x2="270" y2="90"/>
+    <line class="e d9"  x1="100" y1="290" x2="270" y2="170"/>
+    <line class="e d10" x1="100" y1="290" x2="270" y2="250"/>
+    <line class="e d11" x1="100" y1="290" x2="270" y2="330"/>
+
+    <!-- H1 → H2 (4×4=16) -->
+    <line class="e d12" x1="270" y1="90"  x2="450" y2="90"/>
+    <line class="e d13" x1="270" y1="90"  x2="450" y2="170"/>
+    <line class="e d14" x1="270" y1="90"  x2="450" y2="250"/>
+    <line class="e d15" x1="270" y1="90"  x2="450" y2="330"/>
+    <line class="e d16" x1="270" y1="170" x2="450" y2="90"/>
+    <line class="e d17" x1="270" y1="170" x2="450" y2="170"/>
+    <line class="e d18" x1="270" y1="170" x2="450" y2="250"/>
+    <line class="e d19" x1="270" y1="170" x2="450" y2="330"/>
+    <line class="e d20" x1="270" y1="250" x2="450" y2="90"/>
+    <line class="e d21" x1="270" y1="250" x2="450" y2="170"/>
+    <line class="e d22" x1="270" y1="250" x2="450" y2="250"/>
+    <line class="e d23" x1="270" y1="250" x2="450" y2="330"/>
+    <line class="e d24" x1="270" y1="330" x2="450" y2="90"/>
+    <line class="e d25" x1="270" y1="330" x2="450" y2="170"/>
+    <line class="e d26" x1="270" y1="330" x2="450" y2="250"/>
+    <line class="e d27" x1="270" y1="330" x2="450" y2="330"/>
+
+    <!-- H2 → H3 (4×3=12) -->
+    <line class="e d0"  x1="450" y1="90"  x2="630" y2="130"/>
+    <line class="e d4"  x1="450" y1="90"  x2="630" y2="210"/>
+    <line class="e d8"  x1="450" y1="90"  x2="630" y2="290"/>
+    <line class="e d13" x1="450" y1="170" x2="630" y2="130"/>
+    <line class="e d17" x1="450" y1="170" x2="630" y2="210"/>
+    <line class="e d21" x1="450" y1="170" x2="630" y2="290"/>
+    <line class="e d16" x1="450" y1="250" x2="630" y2="130"/>
+    <line class="e d20" x1="450" y1="250" x2="630" y2="210"/>
+    <line class="e d24" x1="450" y1="250" x2="630" y2="290"/>
+    <line class="e d12" x1="450" y1="330" x2="630" y2="130"/>
+    <line class="e d22" x1="450" y1="330" x2="630" y2="210"/>
+    <line class="e d28" x1="450" y1="330" x2="630" y2="290"/>
+
+    <!-- H3 → Output (3×2=6) -->
+    <line class="e d5"  x1="630" y1="130" x2="800" y2="170"/>
+    <line class="e d15" x1="630" y1="130" x2="800" y2="250"/>
+    <line class="e d10" x1="630" y1="210" x2="800" y2="170"/>
+    <line class="e d20" x1="630" y1="210" x2="800" y2="250"/>
+    <line class="e d25" x1="630" y1="290" x2="800" y2="170"/>
+    <line class="e d29" x1="630" y1="290" x2="800" y2="250"/>
+  </g>
+
+  <!-- ── NODES ── -->
+  <g filter="url(#rough)">
+    <!-- Input: filled dots -->
+    <circle class="in0" cx="100" cy="130" r="9" fill="#111" stroke="#111" stroke-width="1.5"/>
+    <circle class="in1" cx="100" cy="210" r="9" fill="#111" stroke="#111" stroke-width="1.5"/>
+    <circle class="in2" cx="100" cy="290" r="9" fill="#111" stroke="#111" stroke-width="1.5"/>
+
+    <!-- H1: hollow ovals -->
+    <ellipse class="h10" cx="270" cy="90"  rx="17" ry="22" stroke="#111" transform="rotate(-7,270,90)"/>
+    <ellipse class="h11" cx="270" cy="170" rx="17" ry="22" stroke="#111" transform="rotate(5,270,170)"/>
+    <ellipse class="h12" cx="270" cy="250" rx="17" ry="22" stroke="#111" transform="rotate(-4,270,250)"/>
+    <ellipse class="h13" cx="270" cy="330" rx="17" ry="22" stroke="#111" transform="rotate(6,270,330)"/>
+
+    <!-- H2: hollow ovals -->
+    <ellipse class="h20" cx="450" cy="90"  rx="17" ry="22" stroke="#111" transform="rotate(6,450,90)"/>
+    <ellipse class="h21" cx="450" cy="170" rx="17" ry="22" stroke="#111" transform="rotate(-5,450,170)"/>
+    <ellipse class="h22" cx="450" cy="250" rx="17" ry="22" stroke="#111" transform="rotate(7,450,250)"/>
+    <ellipse class="h23" cx="450" cy="330" rx="17" ry="22" stroke="#111" transform="rotate(-6,450,330)"/>
+
+    <!-- H3: hollow ovals -->
+    <ellipse class="h30" cx="630" cy="130" rx="17" ry="22" stroke="#111" transform="rotate(-5,630,130)"/>
+    <ellipse class="h31" cx="630" cy="210" rx="17" ry="22" stroke="#111" transform="rotate(7,630,210)"/>
+    <ellipse class="h32" cx="630" cy="290" rx="17" ry="22" stroke="#111" transform="rotate(-4,630,290)"/>
+
+    <!-- Output: filled dots -->
+    <circle class="o0" cx="800" cy="170" r="9" fill="#111" stroke="#111" stroke-width="1.5"/>
+    <circle class="o1" cx="800" cy="250" r="9" fill="#111" stroke="#111" stroke-width="1.5"/>
+  </g>
+
+  <!-- ── SIGNALS ── -->
+  <circle class="sig s0"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="0.00s"><mpath href="#p0"/></animateMotion></circle>
+  <circle class="sig s1"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="0.33s"><mpath href="#p1"/></animateMotion></circle>
+  <circle class="sig s2"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="0.67s"><mpath href="#p2"/></animateMotion></circle>
+  <circle class="sig s3"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="1.00s"><mpath href="#p3"/></animateMotion></circle>
+  <circle class="sig s4"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="1.33s"><mpath href="#p4"/></animateMotion></circle>
+  <circle class="sig s5"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="1.67s"><mpath href="#p5"/></animateMotion></circle>
+  <circle class="sig s6"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="2.00s"><mpath href="#p6"/></animateMotion></circle>
+  <circle class="sig s7"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="2.33s"><mpath href="#p7"/></animateMotion></circle>
+  <circle class="sig s8"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="2.67s"><mpath href="#p8"/></animateMotion></circle>
+  <circle class="sig s9"  r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="3.00s"><mpath href="#p9"/></animateMotion></circle>
+  <circle class="sig s10" r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="3.33s"><mpath href="#p10"/></animateMotion></circle>
+  <circle class="sig s11" r="4"><animateMotion dur="4s" repeatCount="indefinite" begin="3.67s"><mpath href="#p11"/></animateMotion></circle>
+</svg>
