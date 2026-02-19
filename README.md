@@ -1,3 +1,3 @@
-![the world](boratsbias3.svg)
+![the world](github-readme.svg)
 
 Needs more time.
